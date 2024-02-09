@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Facebook" transform="translate(-315 -1002)">
+    <rect id="Bg" width="40" height="40" transform="translate(315 1002)" fill="#fff" opacity="0"/>
+    <path fill="white" id="facebook-2" data-name="facebook" d="M17.631,4.649h2.556V.2A33,33,0,0,0,16.463,0c-3.685,0-6.21,2.318-6.21,6.578V10.5H6.187v4.977h4.067V28H15.24V15.477h3.9l.619-4.977H15.238V7.072c0-1.438.388-2.423,2.393-2.423Z" transform="translate(321.813 1008)"/>
+  </g>
+</svg>
