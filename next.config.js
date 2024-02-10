@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['api.lucasfalb.com'], // Add any other domains as needed
+    domains: ['api.lucasfalb.com','assets-global.website-files.com'],
   },
 }
