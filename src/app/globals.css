@@ -1,6 +1,85 @@
+/* styles/fonts.css */
+
+/* Mont-ExtraLight */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Mont-Light */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Mont-Thin */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Mont-Regular */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Mont-Medium -- Assumindo que Medium é tratado como SemiBold */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Mont-Bold */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Mont-Heavy */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Heavy.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Mont-Black */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Mont-Book -- Assumindo um peso específico para Book */
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Book.otf') format('opentype');
+  font-weight: 350; /* Este valor é um exemplo; ajuste conforme o peso real da fonte Book */
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -20,6 +99,7 @@
   -ms-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
   font-smoothing: antialiased;
+  font-family: 'Mont', sans-serif;
 }
 .fade-in {
   animation: fadeInAnimation ease 1s;
@@ -47,6 +127,7 @@
 
 body {
   background: var(--white);
+  font-family: 'Mont', sans-serif;
 }
 
 @layer utilities {

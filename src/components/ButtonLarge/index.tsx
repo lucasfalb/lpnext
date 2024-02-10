@@ -1,9 +1,9 @@
 import React, { ReactNode, MouseEvent } from 'react';
 
 interface ButtonProps {
-  color: string;
+  color?: string;
   text: ReactNode;
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function ButtonLarge({ color, text, onClick }: ButtonProps) {

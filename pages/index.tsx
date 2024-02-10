@@ -1,5 +1,7 @@
+import "../src/app/globals.css";
 import 'tailwindcss/tailwind.css';
 import { GetServerSideProps } from 'next';
+import Head from "next/head";
 import ComponentMapper from '@/utils/ComponentMapper';
 
 type HomePageProps = {
@@ -9,6 +11,11 @@ type HomePageProps = {
 export default function Home({ siteConfig }: HomePageProps) {
   return (
     <>
+      <Head>
+        <title>Carplus - Growth</title>
+        <meta name="description" content="The best LP" />
+        <link rel="preload" href="/fonts/Mont-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+      </Head>
       {siteConfig.page_config_v1 && siteConfig.page_config_v1.map((item: any, index: number) => {
         const Component = ComponentMapper[item.acf_fc_layout];
         return Component ? <Component key={index} {...item} /> : null;
