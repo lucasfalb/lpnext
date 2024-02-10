@@ -10,6 +10,7 @@ type FAQProps = {
   title?: string,
   questions?: Array<Question>,
 }
+
 export default function FAQ({ title, questions }: FAQProps) {
   return (
     <Container className="my-14">
