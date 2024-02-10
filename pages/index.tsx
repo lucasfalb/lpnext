@@ -5,6 +5,7 @@ import ComponentMapper from '@/utils/ComponentMapper';
 type HomePageProps = {
   siteConfig: any;
 }
+
 export default function Home({ siteConfig }: HomePageProps) {
   return (
     <>
@@ -19,6 +20,7 @@ export default function Home({ siteConfig }: HomePageProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch('https://api.lucasfalb.com/wp-json/site-config/v1');
   const siteConfig = await res.json();
+
   return {
     props: {
       siteConfig,

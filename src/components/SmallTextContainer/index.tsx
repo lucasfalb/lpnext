@@ -1,6 +1,6 @@
 type SmallTextContainerProps = {
-  text: string,
-  background: boolean,
+  text?: string,
+  background?: boolean,
 }
 
 export default function SmallTextContainer({text, background}: SmallTextContainerProps){

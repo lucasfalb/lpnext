@@ -10,6 +10,7 @@ import VehicleFilterComponent from "@/components/VehicleFilterComponent";
 import HeroSectionWithMultistep from "@/components/HeroSectionWithMultistep";
 import Trustpilot from "@/components/Trustpilot";
 import CustomerTestimonial from "@/components/CustomerTestimonial/CustomerTestimonial";
+import FAQ from '@/components/FAQ';
 
 interface ComponentMapperType {
   [key: string]: FunctionComponent;
@@ -22,6 +23,8 @@ const ComponentMapper: ComponentMapperType = {
   trustpilot: Trustpilot,
   services_box: SectionWithCards,
   customer_testimonial: CustomerTestimonial,
+  faq: FAQ,
+  small_text_container: SmallTextContainer,
   footer: Footer
 };
 

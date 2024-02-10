@@ -117,7 +117,6 @@ const dataInfo: DataInfo = {
   Outro: ["Outro"],
 };
 function FormMultistep(): JSX.Element {
-  console.log(dataInfo)
   const [step, setStep] = useState<number>(1);
   const [selectedMarca, setSelectedMarca] = useState<string>('');
   const [selectedModelo, setSelectedModelo] = useState<string>('');
@@ -153,7 +152,7 @@ function FormMultistep(): JSX.Element {
   }
 
   return (
-    <section className="bg-white flex flex-col gap-10 custom-box-shadow p-6 rounded transition-opacity duration-500 select-none ease-in-out">
+    <section className="bg-white flex h-fit flex-col gap-10 custom-box-shadow p-6 rounded transition-opacity duration-500 select-none ease-in-out">
       <header className="flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 font-normal">
           <span className="w-10 h-10 min-h-10 min-w-10 text-lightbluecp font-semibold rounded-full border-gray flex items-center justify-center gap-0.5">
