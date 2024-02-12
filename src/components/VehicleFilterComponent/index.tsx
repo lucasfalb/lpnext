@@ -95,6 +95,6 @@ const VehicleFilterComponent: React.FC = () => {
   );
 };
 function inProgress(){
-  return (<h2>Cars Gallery in building</h2>)
+  return (<h2 className='p-5 text-center'>Cars Gallery in building</h2>)
 }
 export default inProgress;

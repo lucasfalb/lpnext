@@ -4,7 +4,7 @@ import './style.css';
 
 export default function CustomerTestimonial() {
   return (
-    <Container className="my-14 gap-2">
+    <Container className="my-7 md:my-14 gap-2">
       <div className="grid grid-cols-3 gap-4 lg:w-[140%]">
         <figure className="col-span-2 w-full rounded overflow-hidden">
           <Image className="w-full rounded h-full object-cover hover:scale-110 duration-500" src='https://assets-global.website-files.com/65a7c073cee168c7567a4185/65a80082d06b453109289317_UGC_Diogo%20Ventura_%20Jul%202023-p-500.png' width={644} height={357} alt='Carplus' />

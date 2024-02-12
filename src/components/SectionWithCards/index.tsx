@@ -15,8 +15,8 @@ type SectionWithCardsProps = {
 export default function SectionWithCards({ title, subtitle, box, background }: SectionWithCardsProps) {
   return (
     <section className={`${background ? 'bg-darkBlueCp' : ''}`}>
-      <div className="py-14 max-w-[1920px] px-5 mx-auto flex flex-col gap-10">
-        <h2 className={`${background ? 'text-white' : 'text-darkBlueCp'} text-4xl font-bold  max-w-[762px]`} dangerouslySetInnerHTML={{ __html: title || '' }}></h2>
+      <div className="py-7 max-w-[1920px] px-5 mx-auto flex flex-col gap-6 md:gap-10 md:py-14">
+        <h2 className={`${background ? 'text-white' : 'text-darkBlueCp'}  font-bold  max-w-[762px] text-2xl md:text-4xl`} dangerouslySetInnerHTML={{ __html: title || '' }}></h2>
         <h3 className={`${background ? 'text-white' : 'text-darkBlueCp'} text-base font-semibold  max-w-[762px] text-justify tracking-[custom]`}>{subtitle}</h3>
         <div className="grid grid-cols-1 gap-6 flex-wrap md:grid-cols-2 lg:grid-cols-4 ">
           {box && box.map((box, index) => (
