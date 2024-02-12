@@ -94,5 +94,7 @@ const VehicleFilterComponent: React.FC = () => {
     </div>
   );
 };
-
-export default VehicleFilterComponent;
+function inProgress(){
+  return (<h2>Cars Gallery in building</h2>)
+}
+export default inProgress;
