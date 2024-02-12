@@ -45,19 +45,19 @@ export default function Countdown({ startDate, endDate, background }: CountdownP
   return (
     <div className={`py-14 ${background ? 'text-white bg-darkBlueCp' : 'text-darkBlueCp'} flex flex-col items-center gap-1`}>
       <h2 className="font-semibold text-lg">Campanha válida de</h2>
-      <p className="flex gap-2 items-baseline text-[18px]">
-        <em className="text-2xl not-italic font-bold">{formatDate(startDate || '')}</em> até
-        <em className="text-2xl not-italic font-bold">{formatDate(endDate || '')}</em>
+      <p className="flex gap-2 items-center text-[18px] md:items-baseline">
+        <em className="text-lg text-center not-italic font-bold md:text-2xl">{formatDate(startDate || '')}</em> até
+        <em className="text-lg text-center not-italic font-bold md:text-2xl">{formatDate(endDate || '')}</em>
       </p>
 
-      <div className="flex items-center gap-4 mt-4">
-        <span className="flex flex-col items-center gap-3"><b className="text-5xl">{timeLeft.days}</b> dias</span>
-        <span className="text-5xl">:</span>
-        <span className="flex flex-col items-center gap-3"><b className="text-5xl">{timeLeft.hours}</b> horas</span>
-        <span className="text-5xl">:</span>
-        <span className="flex flex-col items-center gap-3"><b className="text-5xl">{timeLeft.minutes}</b> minutos</span>
-        <span className="text-5xl">:</span>
-        <span className="flex flex-col items-center gap-3"><b className="text-5xl">{timeLeft.seconds}</b> segundos</span>
+      <div className="gap-2 flex items-center mt-4 md:gap-4">
+        <span className="gap-1 flex flex-col items-center md:gap-3"><b className="text-lg md:text-5xl">{timeLeft.days}</b> dias</span>
+        <span className="text-lg md:text-5xl">:</span>
+        <span className="gap-1 flex flex-col items-center md:gap-3"><b className="text-lg md:text-5xl">{timeLeft.hours}</b> horas</span>
+        <span className="text-lg md:text-5xl">:</span>
+        <span className="gap-1 flex flex-col items-center md:gap-3"><b className="text-lg md:text-5xl">{timeLeft.minutes}</b> minutos</span>
+        <span className="text-lg md:text-5xl">:</span>
+        <span className="gap-1 flex flex-col items-center md:gap-3"><b className="text-lg md:text-5xl">{timeLeft.seconds}</b> segundos</span>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ type SectionWithCTAProps = {
 export default function SectionWithCTA({ title, description, ctaText, ctaLink }: SectionWithCTAProps) {
   return (
     <Container>
-      <h2 className="text-2xl font-bold text-darkBlueCp sticky top-4 h-fit">{title || ''}</h2>
+      <h2 className="text-2xl font-bold text-darkBlueCp">{title || ''}</h2>
       <div>
         <h3 className="text-lg font-semibold text-darkBlueCp">{description || ''}</h3>
         <Link className="mt-10 flex items-center justify-center text-base font-bold p-[17.5px] text-white bg-darkBlueCp custom-box-shadow rounded" href={ctaLink || '#'}>
