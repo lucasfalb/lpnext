@@ -7,7 +7,6 @@ interface SelectableItemProps {
   selected: number;
   onSelect: (id: number) => void;
 }
-
 function SelectableItem({ id, description, selected, onSelect }:SelectableItemProps) {
   const isSelected = id === selected;
   const itemClass = `p-5 relative w-full no-select cursor-pointer select-none rounded ${isSelected ? 'text-black bg-white' : 'text-gray bg-whiteSmoke'}`;
