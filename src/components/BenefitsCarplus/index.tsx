@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from "@/components/Container";
-
+import ContentTable from './ContentTable';
+import ContentDefault from './ContentDefault';
 interface SelectableItemProps {
   id: number;
   description: string;
@@ -24,12 +25,12 @@ export default function BenefitsCarplus() {
 
   const renderContent = (id: number) => {
     switch (id) {
-      case 1: return <div className="custom-box-shadow min-h-fit h-full"><h2>Verificação em 300 pontos</h2></div>;
-      case 2: return <div className="custom-box-shadow min-h-fit h-full"><h2>Até 3 anos de garantia</h2></div>;
-      case 3: return <div className="custom-box-shadow min-h-fit h-full"><h2>Teste-drive prévio</h2></div>;
-      case 4: return <div className="custom-box-shadow min-h-fit h-full"><h2>Entrega imediata</h2></div>;
-      case 5: return <div className="custom-box-shadow min-h-fit h-full"><h2>Garantia de satisfação ou reembolso</h2></div>;
-      case 6: return <div className="custom-box-shadow min-h-fit h-full"><h2>Entrega em sua casa</h2></div>;
+      case 1:return <ContentTable />;
+      case 2:return <ContentDefault title='Até 3 anos de Garantia' description='Sinta-se mais seguro e tranquilo com uma garantia até 3 anos.' />;
+      case 3:return <ContentDefault title='Teste-drive prévio' description='Realizar um test-drive é fundamental para poder avaliar se o veículo, realmente, atende às suas necessidades e cumpre com as suas expectativas.' cta="Marcar Test-Drive" />;
+      case 4:return <ContentDefault title='Entrega imediata' description='Sabemos o quão estimulante pode ser comprar um carro novo e por esse motivo, não o queremos fazer esperar.' />;
+      case 5:return <ContentDefault title='Garantia de satisfação ou reembolso' description='O nosso objetivo é que todos os veículos superem, ou pelo menos, corresponda às suas expectativas. Caso isso não aconteça, poderá devolver o seu veículo até 14 dias ou 1.000 km após a compra.' />;
+      case 6:return <ContentDefault title='Entrega em sua casa' description='A conveniência de poder receber o seu carro em sua casa.' />;
       default: return <div className="custom-box-shadow min-h-fit h-full"><h2>Conteúdo não encontrado</h2></div>;
     }
   };
@@ -40,8 +41,8 @@ export default function BenefitsCarplus() {
         <h2 className="text-2xl md:text-4xl font-bold text-darkBlueCp">Apenas na Carplus encontrará:</h2>
         <h3 className="text-base font-semibold text-darkBlueCp">Por que se contentar com o comum quando você pode dirigir algo extraordinário? Escolha a Carplus.pt para uma experiência de compra de carros usados seamless,</h3>
       </div>
-      <Container className="!px-0 col-span-full">
-        <aside className="flex flex-col gap-6 relative max-w-[361px]">
+      <section className="!px-0 col-span-full flex justify-between items-start gap-10 flex-col md:flex-row">
+        <aside className="flex flex-col gap-6 relative w-full md:max-w-[361px]">
           <h2 className="text-lg font-bold text-darkBlueCp">O que esperar desta viatura:</h2>
           <div className="rounded p-2 flex flex-col relative bg-whiteSmoke">
             <SelectableItem id={1} description="Verificação em 300 pontos" selected={selected} onSelect={setSelected} />
@@ -52,10 +53,10 @@ export default function BenefitsCarplus() {
             <SelectableItem id={6} description="Entrega em sua casa" selected={selected} onSelect={setSelected} />
           </div>
         </aside>
-        <div className='w-full'>
+        <div className='w-full h-full max-w-[1100px]'>
           {renderContent(selected)}
         </div>
-      </Container>
+      </section>
     </Container>
   );
 }

@@ -1,5 +1,4 @@
 import "../src/app/globals.css";
-import 'tailwindcss/tailwind.css';
 import { GetServerSideProps } from 'next';
 import Head from "next/head";
 import ComponentMapper from '@/utils/ComponentMapper';
