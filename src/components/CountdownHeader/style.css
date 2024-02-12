@@ -1,0 +1,14 @@
+.countdown{
+  min-height: 58px;
+}
+@media (max-width: 569px) {
+  .countdown{
+    min-height: 74px;
+  }
+}
+@media (max-width: 416px) {
+  .countdown span:nth-child(1),
+  .countdown span:nth-child(2){
+    font-size:12px;
+  }
+}

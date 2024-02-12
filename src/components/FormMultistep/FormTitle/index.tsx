@@ -4,6 +4,6 @@ interface FormTitleProps {
 
 export default function FormTitle({ text }: FormTitleProps) {
   return (
-    <h2 className="text-bluecp text-base font-medium text-[18px] col-span-full">{text}</h2>
+    <h2 className="text-darkBlueCp text-lg font-medium text-[18px] col-span-full">{text}</h2>
   );
 }
