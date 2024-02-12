@@ -1,5 +1,5 @@
 import Container from "@/components/Container"
-import ButtonLarge from "../FormMultistep/ButtonLarge"
+import ButtonLarge from "@/components/ButtonLarge"
 import Link from "next/link"
 
 type SectionWithCTAProps = {
