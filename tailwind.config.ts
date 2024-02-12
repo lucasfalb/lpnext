@@ -13,6 +13,7 @@ const config: Config = {
         darkBlueCp: '#001B59',
         lightBlueCp: '#99A7C5',
         gray: '#808080',
+        grayAlternative: '#CCD3E2',
         whiteSmoke: '#FBFBFB',
         lightGray: '#F4F4F4'
       },
@@ -22,7 +23,6 @@ const config: Config = {
       },
       spacing: {
         '38px': '2.375rem',
-        '1440px': '90rem',
         '64px': '4rem',
         '80px': '5rem',
         '40px': '2.5rem',
@@ -42,6 +42,8 @@ const config: Config = {
         lightGray: '#F4F4F4'
       },
       backgroundColor: {
+        'blueAlternative': '#00226F',
+        darkBlueCp: '#001B59',
         'blue-500': '#0053ff',
         whiteSmoke: '#FBFBFB',
         lightGray: '#F4F4F4'

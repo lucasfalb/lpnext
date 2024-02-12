@@ -5,7 +5,7 @@ type ContainerProps = {
 
 export default function Container({ children, className }: ContainerProps) {
   return (
-    <section className={`${className ? className : ''} max-w-[1440px] relative w-full m-auto grid gap-12 px-5 grid-cols-1 lg:grid-cols-2`}>
+    <section className={`px-5 ${className ? className : ''} max-w-[1920px] relative w-full m-auto grid gap-12  grid-cols-1 lg:grid-cols-2`}>
       {children}
     </section>
   )
