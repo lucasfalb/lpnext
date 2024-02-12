@@ -1,8 +1,4 @@
-import React, { useState } from 'react';
-
-const generateUniqueId = () => {
-  return '_' + Math.random().toString(36).substr(2, 9);
-};
+import React, { useState, useEffect } from 'react';
 
 interface CustomRadioProps {
   value: string;
@@ -12,7 +8,11 @@ interface CustomRadioProps {
 }
 
 export default function CustomRadio({ value, label, checked, onChange }: CustomRadioProps) {
-  const [inputId] = useState(generateUniqueId());
+  const [inputId, setInputId] = useState<string>('');
+
+  useEffect(() => {
+    setInputId(generateUniqueId());
+  }, []);
 
   const handleInputChange = () => {
     onChange(value);
@@ -35,3 +35,7 @@ export default function CustomRadio({ value, label, checked, onChange }: CustomR
     </label>
   );
 }
+
+const generateUniqueId = () => {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};

@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import ButtonLarge from '@/components/ButtonLarge';
 import ButtonBack from '@/components/ButtonBack';
-import FormTitle from '@/components/FormTitle';
-import CustomSelect from '@/components/CustomSelect';
-import CustomRadio from '@/components/CustomRadio';
+import FormTitle from '@/components/FormMultistep/FormTitle';
+import CustomSelect from '@/components/FormMultistep/CustomSelect';
+import CustomRadio from '@/components/FormMultistep/CustomRadio';
 import './style.css';
 
 interface DataInfo {
@@ -161,7 +161,6 @@ function FormMultistep(): JSX.Element {
   const handleChange = (value: string) => {
     setSelectedOption(value);
   };
-
   return (
     <section className="bg-white flex h-fit flex-col gap-10 custom-box-shadow p-6 rounded transition-opacity duration-500 select-none ease-in-out">
       <header className="flex items-center justify-center">
@@ -192,7 +191,7 @@ function FormMultistep(): JSX.Element {
 
         <div className={`step auto-rows-max gap-4 ${step === 2 ? 'active' : ''}`}>
           <FormTitle text={stepDescription} />
-          <div className='grid grid-cols-2 gap-4'>
+          <div className='grid-cols-1 grid sm:grid-cols-2 gap-4'>
             {dealers.map((dealer, index) => (
               <CustomRadio
                 key={dealer.value}

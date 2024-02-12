@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import MultiStepIcon from '../../../public/icon-form.svg';
+import MultiStepIcon from '../../../../public/icon-form.svg';
 
 interface CustomSelectProps {
   label: string;
