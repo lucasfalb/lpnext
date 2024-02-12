@@ -18,11 +18,9 @@ export default function RootLayout({
         <link rel="preload" href="/fonts/Mont-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
       </Head>
       <body>
-        <Header countdown endDate={'2024-02-09T13:00:00'} />
         <main className="w-full m-auto">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );

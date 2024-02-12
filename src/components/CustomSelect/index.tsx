@@ -56,7 +56,7 @@ export default function CustomSelect({ label, placeholder, options, onChange, di
         >
           {selectedOption || placeholder}
           <span style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s ease' }}>
-            <Image src={MultiStepIcon} width={14} height={14} alt={selectedOption || placeholder} title={selectedOption || placeholder} />
+            <Image src={MultiStepIcon} width={14} height={14} alt={selectedOption || 'Carplus'} title={selectedOption || 'Carplus'} />
           </span>
         </button>
         {isOpen && (
