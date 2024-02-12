@@ -8,6 +8,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+      },
       colors: {
         blackAlternative: '#333333',
         blueLightCp: "#0053ff",

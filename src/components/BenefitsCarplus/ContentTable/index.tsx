@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Content1Img from '../../../../public/content1-img.svg';
 import TableItem from '../TableItem';
 
 export default function ContentTable() {
-  const tableContent = [
+  const tableContent = useMemo(() => [
     {
       title: 'Teste condução em estrada e suspensão',
       pt: 65
@@ -33,13 +33,14 @@ export default function ContentTable() {
       title: 'Outros',
       pt: 54
     }
-  ];
+  ], []);
 
   const [totalPt, setTotalPt] = useState(0);
   useEffect(() => {
     const total = tableContent.reduce((acc, item) => acc + item.pt, 0);
     setTotalPt(total);
   }, [tableContent]);
+
   return (
     <div className="custom-box-shadow min-h-fit h-full relative p-9">
       <h2 className="text-lg text-darkBlueCp font-bold">O que inspecionamos?</h2>
