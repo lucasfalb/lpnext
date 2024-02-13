@@ -56,10 +56,7 @@ export default function CustomTel({
     setShowDropdown(!showDropdown);
   };
 
-  const contentClass =
-    'rounded cursor-pointer border p-5' +
-    (error ? 'border-red-500 ' : 'border-solid border-[#BDBDBD] ');
-
+  const contentClass = `rounded cursor-pointer border ${error ? 'border-red-500 ' : 'border-solid border-[#BDBDBD]'}`;
   return (
     <label className="flex flex-col gap-2 text-sm text-gray leading-none" htmlFor={inputId}>
       {label}
@@ -81,7 +78,7 @@ export default function CustomTel({
           type="tel"
           id={inputId}
           placeholder={placeholder}
-          value={inputValue} // Use value instead of defaultValue
+          value={inputValue}
           onChange={handleInputChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
