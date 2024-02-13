@@ -13,6 +13,7 @@ import CustomerTestimonial from "@/components/CustomerTestimonial/CustomerTestim
 import FAQ from '@/components/FAQ';
 import SectionWithCTA from '@/components/SectionWithCTA';
 import BenefitsCarplus from '@/components/BenefitsCarplus';
+import BenefitsCarplusNoFilter from '@/components/BenefitsCarplusNoFilter';
 
 interface ComponentMapperType {
   [key: string]: FunctionComponent;
@@ -30,6 +31,7 @@ const ComponentMapper: ComponentMapperType = {
   section_with_cta:SectionWithCTA,
   footer: Footer,
   benefits_carplus:BenefitsCarplus,
+  benefits_carplus_no_filter: BenefitsCarplusNoFilter
 };
 
 export default ComponentMapper;

@@ -1,0 +1,12 @@
+.custom-box{
+  border: 1px solid #334E8C;
+  border-image-slice: 1;
+  background: linear-gradient(180deg, #334E8C 0%, #001443 100%),
+linear-gradient(123.42deg, rgba(153, 167, 197, 0.25) 0.6%, rgba(51, 78, 140, 0) 100.03%);
+  box-shadow: 0px 4px 75px 0px #02071429;
+}
+.center-car{
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
