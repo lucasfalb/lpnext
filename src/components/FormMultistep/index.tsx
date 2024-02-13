@@ -120,6 +120,16 @@ const dataInfo: DataInfo = {
   Volvo: ["XC40", "XC60", "Outro"],
   Outro: ["Outro"],
 };
+interface FormValues {
+  name: string;
+  email: string;
+  policyPrivacy: boolean;
+}
+
+interface FormErrors {
+  [key: string]: string;
+}
+
 function FormMultistep(): JSX.Element {
   const dealers = [
     { label: "Carplus Gaia", value: "Carplus Gaia" },
@@ -129,6 +139,7 @@ function FormMultistep(): JSX.Element {
     { stepName: 'Marca e modelo', stepDescription: '🚘 Em qual marca e modelo está interessado?' },
     { stepName: 'Instalação', stepDescription: '🌎 Qual é a instalação mais perto de si?' },
     { stepName: 'Informação adicional', stepDescription: '😃 Conte-nos um bocadinho sobre si.' },
+    { stepName: 'Agradecimento', stepDescription: '😃 Conte-nos um bocadinho sobre si.' },
   ];
   const [step, setStep] = useState<number>(1);
   const [selectedMarca, setSelectedMarca] = useState<string>('');
@@ -159,23 +170,30 @@ function FormMultistep(): JSX.Element {
 
   function submitForm(e: any) {
     e.preventDefault();
+    let isValid = true;
     console.log('Form submitted!');
+    if (isValid) {
+      setStep((prevStep) => prevStep + 1);
+    }
   }
   const handleChange = (value: string) => {
     setSelectedOption(value);
   };
+
   return (
     <section className="bg-white flex h-fit flex-col gap-10 custom-box-shadow p-6 rounded transition-opacity duration-500 select-none ease-in-out">
-      <header className="flex items-center justify-center">
-        <div className="flex flex-col items-center gap-2 font-normal">
-          <span className="w-10 h-10 min-h-10 min-w-10 text-lightbluecp pt-1 font-semibold rounded-full border-gray flex items-center justify-center gap-0.5">
-            <b className="text-darkBlueCp font-bold">{step}</b>/3
-          </span>
-          <strong className="text-center text-darkBlueCp text-sm font-bold">{stepName}</strong>
-        </div>
-      </header>
+      {step !== 4 && (
+        <header className="flex items-center justify-center">
+          <div className="flex flex-col items-center gap-2 font-normal">
+            <span className="w-10 h-10 min-h-10 min-w-10 text-lightbluecp pt-1 font-semibold rounded-full border-gray flex items-center justify-center gap-0.5">
+              <b className="text-darkBlueCp font-bold">{step}</b>/3
+            </span>
+            <strong className="text-center text-darkBlueCp text-sm font-bold">{stepName}</strong>
+          </div>
+        </header>
+      )}
       <div className="relative flex items-stretch w-full h-full">
-        <div className={`step auto-rows-max gap-4 ${step === 3 ? 'active' : ''}`}>
+        <div className={`step auto-rows-max gap-4 ${step === 1 ? 'active' : ''}`}>
           <FormTitle text={stepDescription} />
           <CustomSelect
             label="Marca"
@@ -206,15 +224,19 @@ function FormMultistep(): JSX.Element {
             ))}
           </div>
         </div>
-
-        <div className={`step auto-rows-max gap-6 ${step === 1 ? 'active' : ''}`}>
+        <div className={`step auto-rows-max gap-6 ${step === 3 ? 'active' : ''}`}>
           <FormTitle text={stepDescription} />
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
             <CustomLabelText label='Nome' name='name' placeholder='Informe seu nome.' type="text" autocomplete="name" />
             <CustomTel label='Telemóvel (Opcional)' name='tel' placeholder='Informe seu telemóvel.' />
           </div>
           <CustomLabelText label='E-mail' name='email' placeholder='Informe seu e-mail.' type="email" autocomplete="email" />
-          <CustomCheckbox label='Aceito a política de privacidade de dados' name='policy' />
+          <CustomCheckbox label="Aceito a política de <a class='underline' href='#'>privacidade de dados</a>." name='policy' />
+          <CustomCheckbox label='Autorizo o tratamento dos meus dados pessoais para marketing de produtos e serviços comercializados pela Caetano Retail, SGPS, S.A. e sociedades participadas da Salvador Caetano Auto, SGPS, S.A., e pelas sociedades importadoras e/ou fabricantes da marca do veículo que seja adquirido, objeto de prestação de serviços, que foi experimentado ou em que mostrei interesse.' name='data' />
+        </div>
+        <div className={`step auto-rows-max gap-6 ${step === 4 ? 'active' : ''}`}>
+          <h2 className="text-5xl text-center mt-6">🥳</h2>
+          <h2 className="max-w-[446px] text-center text-darkBlueCp text-lg m-auto">Obrigado pela sua submissão! Iremos entrar em contacto consigo brevemente.</h2>
         </div>
       </div>
       <div className="flex items-center gap-4 controls mt-auto">
