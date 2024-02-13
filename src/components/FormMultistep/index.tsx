@@ -5,6 +5,9 @@ import ButtonBack from '@/components/ButtonBack';
 import FormTitle from '@/components/FormMultistep/FormTitle';
 import CustomSelect from '@/components/FormMultistep/CustomSelect';
 import CustomRadio from '@/components/FormMultistep/CustomRadio';
+import CustomTel from '@/components/FormMultistep/CustomTel';
+import CustomLabelText from '@/components/FormMultistep/CustomLabelText';
+import CustomCheckbox from '@/components/FormMultistep/CustomCheckbox';
 import './style.css';
 
 interface DataInfo {
@@ -134,7 +137,7 @@ function FormMultistep(): JSX.Element {
   const [modelOptions, setModelOptions] = useState<Array<string>>([]);
 
 
- 
+
   const nextStep = () => {
     setStep((prevStep) => prevStep + 1);
   };
@@ -172,7 +175,7 @@ function FormMultistep(): JSX.Element {
         </div>
       </header>
       <div className="relative flex items-stretch w-full h-full">
-        <div className={`step auto-rows-max gap-4 ${step === 1 ? 'active' : ''}`}>
+        <div className={`step auto-rows-max gap-4 ${step === 3 ? 'active' : ''}`}>
           <FormTitle text={stepDescription} />
           <CustomSelect
             label="Marca"
@@ -204,8 +207,14 @@ function FormMultistep(): JSX.Element {
           </div>
         </div>
 
-        <div className={`step auto-rows-max gap-4 ${step === 3 ? 'active' : ''}`}>
+        <div className={`step auto-rows-max gap-6 ${step === 1 ? 'active' : ''}`}>
           <FormTitle text={stepDescription} />
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+            <CustomLabelText label='Nome' name='name' placeholder='Informe seu nome.' type="text" autocomplete="name" />
+            <CustomTel label='Telemóvel (Opcional)' name='tel' placeholder='Informe seu telemóvel.' />
+          </div>
+          <CustomLabelText label='E-mail' name='email' placeholder='Informe seu e-mail.' type="email" autocomplete="email" />
+          <CustomCheckbox label='Aceito a política de privacidade de dados' name='policy' />
         </div>
       </div>
       <div className="flex items-center gap-4 controls mt-auto">

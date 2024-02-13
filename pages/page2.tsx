@@ -16,7 +16,7 @@ export default function Home2({ siteConfig }: HomePageProps) {
         <meta name="description" content="The best LP" />
         <link rel="preload" href="/fonts/Mont-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
       </Head>
-      {siteConfig.page_config_v1 && siteConfig.page_config_v2.map((item: any, index: number) => {
+      {siteConfig.page_config_v2 && siteConfig.page_config_v2.map((item: any, index: number) => {
         const Component = ComponentMapper[item.acf_fc_layout];
         return Component ? <Component key={index} {...item} /> : null;
       })}

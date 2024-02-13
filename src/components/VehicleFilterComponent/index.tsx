@@ -51,13 +51,13 @@ const VehicleFilterComponent: React.FC = () => {
     const requestOptions = {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        'accept': 'application/json',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
         'Content-Type': 'application/json',
-        'CompanyId': '2',
+        'Companyid': '2',
         'Access-Control-Allow-Origin': '*',
-        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkaWdpdGFsX3N0b3JlIiwianRpIjoiMmZkYTZkMGQtM2I4Ni00MWE0LTlkYmMtM2ZiYmZhNGQ5MmMwIiwic3ViIjoiIiwiYXVkIjoiZGlnaXRhbF9zdG9yZV9hdWQiLCJ1c2VySWQiOiIiLCJjb21wYW55SWQiOiIyIiwiZ3JvdXBzIjpbIkd1ZXN0Il0sImV4cCI6NDgyOTA0MDUwOCwiaWF0IjoxNzA2OTc2NjM2fQ.PMHrPnQsclmB-VVf4gLE3VWME0fwborFIf-ZnbYfEw26bsbkmywnAyn2qUn-GVnuvljkQstcpjahGJq7G9B6AW3cAMJMx9pIiI4kWM25KyzvGLOh1w7kLKd-XqirHHZEk1_sYJTnPqlsvDEk13WKlAbHRxUGZlrMP02TMbeVkBRd3Lp7flTLc7GOC_7Q48pHjshnanbXLuhWNaTDhNYVHK6qaA-WSoENGvrd6qw96YUobPD09VTHeE-ILH77WkNL1QXIJOfmv-VjZbr9MTJcTrfudvrxH4MVBgWj9QGb_Q-NHz-GyLSt0Nil6DCS2_l26aUbi6GKcvNzwIL1VfeU7g'
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkaWdpdGFsX3N0b3JlIiwianRpIjoiNWU2YjZhMTctNmU3MS00OGY0LWE2ZWEtMTVjOWQ3Njc4OGEzIiwic3ViIjoiIiwiYXVkIjoiZGlnaXRhbF9zdG9yZV9hdWQiLCJ1c2VySWQiOiIiLCJjb21wYW55SWQiOiIxIiwiZ3JvdXBzIjpbIkd1ZXN0Il0sImV4cCI6NDgyOTg0NTUxNiwiaWF0IjoxNzA3NzgxNjQ0fQ.JNOgPP8KcE_1eayUTnMOVltQZKBNFmw5YP85viJhAmSl-Ti-RoQNJkJle-Vb9NLEmREnxwnPn4AciO_yiisCbr5kS907F07S-nbDtKPCsd7hb_FSoAFTMaAu_LJwrIF1YRXwIo8JlQznShNvlhGoYT_zG9zr-cQ4nWtfdsqjsH-LD4apOMKr2gKKYAdSHkXbs8ufO1etj8_uagBm6TCutfgsM6ZAP4hhM8gHbf5mUUWY7xBaD5SiHcexgduJ5LxtOhDaBMlg93NM2JAoFuaB0Po35r11tg-X1s8g7pp2VS0H2xw4Os5FQ19uLoncRu5hpGH8H1IsI_aAqhyouZklYw'
       },
       body: JSON.stringify(filterPayload),
     };

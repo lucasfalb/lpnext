@@ -46,7 +46,7 @@ export default function CustomSelect({ label, placeholder, options, onChange, di
 
   return (
     <div ref={dropdownRef} className={`relative flex flex-col gap-2 ${disabled ? 'pointer-events-none opacity-50' : ''}`}>
-      <label onClick={toggleDropdown} className="text-sm text-gray font-semibold cursor-pointer">{label}</label>
+      <label onClick={toggleDropdown} className="text-sm text-gray leading-none font-semibold cursor-pointer">{label}</label>
       <div className="relative">
         <button
           title={selectedOption || placeholder}
