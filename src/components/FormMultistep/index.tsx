@@ -164,6 +164,9 @@ function FormMultistep(): JSX.Element {
     setSelectedModelo('');
   };
 
+  const retryFrorm = () => {
+    setStep(1);
+  }
 
   const currentStepInfo = stepsInfo[step - 1];
   const { stepName, stepDescription } = currentStepInfo;
@@ -209,7 +212,6 @@ function FormMultistep(): JSX.Element {
             onChange={(value) => setSelectedModelo(value)}
           />
         </div>
-
         <div className={`step auto-rows-max gap-4 ${step === 2 ? 'active' : ''}`}>
           <FormTitle text={stepDescription} />
           <div className='grid-cols-1 grid sm:grid-cols-2 gap-4'>
@@ -240,8 +242,10 @@ function FormMultistep(): JSX.Element {
         </div>
       </div>
       <div className="flex items-center gap-4 controls mt-auto">
-        {step > 1 && <ButtonBack onClick={prevStep} text="Voltar" />}
-        {step < 3 ? <ButtonLarge color="#00226F" onClick={nextStep} text="Próximo passo" /> : <ButtonLarge color="#0053ff" onClick={submitForm} text="Quero ser contactado" />}
+        {step > 1 && step < 4 && <ButtonBack onClick={prevStep} text="Voltar" />}
+        {step <= 2 && <ButtonLarge color="#00226F" onClick={nextStep} text="Próximo passo" />}
+        {step === 3 && <ButtonLarge color="#0053ff" onClick={submitForm} text="Quero ser contactado" />}
+        {step === 4 && <ButtonBack className="mx-auto my-5" onClick={retryFrorm} text="Fazer novo pedido" />}
       </div>
     </section>
   );

@@ -4,14 +4,15 @@ import React, { ReactNode, MouseEvent } from 'react';
 
 interface ButtonProps {
   text: ReactNode;
+  className?: string;
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function ButtonBack({ text, onClick }: ButtonProps) {
+export default function ButtonBack({ text, onClick, className }: ButtonProps) {
   return (
     <button
       type='button'
-      className='text-base font-bold cursor-pointer flex items-center gap-2 text-blue leading-none align-middle'
+      className={`${className ? className : ''} text-base font-bold cursor-pointer flex items-center gap-2 text-blue leading-none align-middle`}
       onClick={onClick}
     >
       <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
