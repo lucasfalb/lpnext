@@ -91,7 +91,7 @@ const VehicleFilterComponent: React.FC = () => {
           {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
             <button
               key={key}
-              className={`${selectedSegment === value ? 'bg-white text-darkBlueCp' : 'bg-whiteSmoke text-[#C1C1C1]'} py-5 px-6 text-base font-bold flex items-center justify-center`}
+              className={`${selectedSegment === value ? 'bg-white text-darkBlueCp font-bold' : 'bg-whiteSmoke text-[#C1C1C1]'} py-5 px-6 text-base flex items-center justify-center`}
               onClick={() => setSelectedSegment(Number(value))}
             >
               {key.replace('_', ' ')}
@@ -106,7 +106,7 @@ const VehicleFilterComponent: React.FC = () => {
               <VehicleCard key={index} {...vehicle} />
             ))
           ) : (
-            <div className="col-span-4 text-center">Não há carros nesse segmento</div>
+            <div className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</div>
           )}
         </div>
       </div>
