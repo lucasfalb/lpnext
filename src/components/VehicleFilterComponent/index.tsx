@@ -77,25 +77,6 @@ const VehicleFilterComponent: React.FC = () => {
         <h2 className='text-white text-5xl font-bold text-center max-w-[860px]'>Conheça os nossos Renault mais procurados!</h2>
         <h3 className='text-white text-lg text-center'>Garanta o seu com a qualidade e confiança da Carplus!</h3>
 
-        <select className="mobile-select" onChange={(e) => setSelectedSegment(e.target.value ? Number(e.target.value) : undefined)}>
-          <option value="">Selecione um segmento</option>
-          {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
-            <option key={key} value={value}>{key.replace('_', ' ')}</option>
-          ))}
-        </select>
-
-        <div className="desktop-select">
-          {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
-            <button
-              key={key}
-              className={`segment-button ${selectedSegment === value ? 'selected' : ''}`}
-              onClick={() => setSelectedSegment(Number(value))}
-            >
-              {key.replace('_', ' ')}
-            </button>
-          ))}
-        </div>
-
         {loading && <div>Carregando...</div>}
         {error && <div>Erro: {error}</div>}
 
