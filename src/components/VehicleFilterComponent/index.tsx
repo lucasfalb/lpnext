@@ -77,10 +77,11 @@ const VehicleFilterComponent: React.FC = () => {
         <h2 className='text-white text-5xl font-bold text-center max-w-[860px]'>Conheça os nossos Renault mais procurados!</h2>
         <h3 className='text-white text-lg text-center'>Garanta o seu com a qualidade e confiança da Carplus!</h3>
 
+
         {loading && <div>Carregando...</div>}
         {error && <div>Erro: {error}</div>}
 
-        <div className='grid grid-cols-4 gap-4 p-6 rounded custom-shadow-cars bg-white'>
+        <div className='grid grid-cols-4 gap-4 p-6 rounded custom-shadow-cars bg-white min-w-full'>
           {vehicles.map((vehicle, index) => (
             <VehicleCard key={index} {...vehicle} />
           ))}
