@@ -1,4 +1,5 @@
 import React from 'react';
+
 enum VehicleSegment {
   TODOS = 0,
   SEDAN = 13,
@@ -11,9 +12,10 @@ enum VehicleSegment {
   CARRINHA = 14,
   CABRIO = 18,
 }
+
 interface CarFilterDesktopProps {
-  selectedSegment: number | undefined;
-  setSelectedSegment: (value: number | undefined) => void;
+  selectedSegment: number;
+  setSelectedSegment: (value: number) => void;
 }
 
 const CarFilterDesktop: React.FC<CarFilterDesktopProps> = ({ selectedSegment, setSelectedSegment }) => (
@@ -21,7 +23,7 @@ const CarFilterDesktop: React.FC<CarFilterDesktopProps> = ({ selectedSegment, se
     {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
       <button
         key={key}
-        className={`${selectedSegment === value ? 'bg-white text-darkBlueCp font-bold' : 'bg-whiteSmoke text-[#C1C1C1]'} py-5 px-6 text-base flex items-center justify-center`}
+        className={`${selectedSegment === value ? 'bg-white text-darkBlueCp font-bold' : 'bg-whiteSmoke text-[#C1C1C1]'} py-5 px-6 text-base flex items-center justify-center hover:text-darkBlueCp`}
         onClick={() => setSelectedSegment(Number(value))}
       >
         {key.replace('_', ' ')}

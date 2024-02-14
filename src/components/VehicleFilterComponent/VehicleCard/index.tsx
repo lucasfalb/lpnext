@@ -5,9 +5,9 @@ export default function VehicleCard(props: VehicleDetail): JSX.Element {
     const { brand, model, version, imageUrl, pricePvp } = props;
 
     return (
-      <article className='animate-fadeIn flex flex-col gap-4 cursor-pointer max-w-[417px]'>
+      <article className='animate-fadeIn flex flex-col gap-4 cursor-pointer w-full '>
         <figure>
-          <Image className='rounded aspect-video object-cover' src={imageUrl} alt={model} width={418} height={241} /> 
+          <Image className='rounded aspect-video object-cover w-full' src={imageUrl} alt={model} width={418} height={241} /> 
         </figure>
         <div className='flex items-start justify-between gap-2'>
           <div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import VehicleDetail from '@/utils/TypesVehicle'
+import VehicleDetail from '@/utils/TypesVehicle';
 import VehicleCard from './VehicleCard';
 import CarSvg from '@/components/CarSvg';
 import CarFilterDesktop from './CarFilterDesktop';
 import CarFilterMobile from './CarFilterMobile';
-import './style.css'
+import './style.css';
+
 enum VehicleSegment {
   TODOS = 0,
   SEDAN = 13,
@@ -29,6 +30,7 @@ interface SearchResponse {
   };
   pagination: {
     maxPage: number;
+    currentPage: number;
   }
 }
 
@@ -36,17 +38,13 @@ const VehicleFilterComponent: React.FC = () => {
   const [vehicles, setVehicles] = useState<VehicleDetail[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedSegment, setSelectedSegment] = useState<number | undefined>(0);
+  const [selectedSegment, setSelectedSegment] = useState<number>(VehicleSegment.TODOS);
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [toggleAnimation, setToggleAnimation] = useState(false);
 
-
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1280);
-    };
-    handleResize();
+    const handleResize = () => setIsMobile(window.innerWidth < 1280);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -56,7 +54,7 @@ const VehicleFilterComponent: React.FC = () => {
     const url = 'https://api.gsci.pt/ds/search/v2';
     const filterPayload = {
       filters: {
-        segment: (selectedSegment !== undefined && selectedSegment !== 0) ? [selectedSegment] : [],
+        segment: selectedSegment !== VehicleSegment.TODOS ? [selectedSegment] : [],
       },
       needle: "",
     };
@@ -73,30 +71,24 @@ const VehicleFilterComponent: React.FC = () => {
 
     try {
       const response = await fetch(`${url}?numberElements=8&page=${currentPage}&showReservation=1&sort=createTime&orderBy=asc`, requestOptions);
-      if (!response.ok) throw new Error('Erro na resposta da API');
+      if (!response.ok) throw new Error('API response error');
       const data: SearchResponse = await response.json();
-      console.log(data)
       setVehicles(data.data.searchResult);
       setTotalPages(data.pagination.maxPage);
-      setToggleAnimation((prev) => !prev);
-    } catch (error: any) {
-      console.error(error)
+      setToggleAnimation(prev => !prev);
+    } catch (error) {
+      console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    setCurrentPage(1)
     fetchVehicles();
   }, [currentPage, selectedSegment]);
-  function goToNextPage() {
-    setCurrentPage(currentPage + 1);
-  };
 
-  function goToPreviousPage() {
-    setCurrentPage(currentPage - 1);
-  };
+  const changePage = (newPage: number) => setCurrentPage(prevPage => prevPage + newPage);
+
   return (
     <section className='bg-cars-gallery-gradient py-14 relative overflow-hidden min-h-[650px]'>
       <div className='max-w-[1920px] px-5 m-auto flex flex-col items-center gap-8 relative z-[2]'>
@@ -109,26 +101,19 @@ const VehicleFilterComponent: React.FC = () => {
           <CarFilterDesktop selectedSegment={selectedSegment} setSelectedSegment={setSelectedSegment} />
         )}
 
-        <div
-          className={`sm:grid-cols-1 grid lg:grid-cols-2 xl:grid-cols-4 gap-4 p-6 place-items-center rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''
-            }`}
-        >
-          {vehicles.length > 0 ? (
-            vehicles.map((vehicle, index) => (
-              <VehicleCard key={vehicle.vin} {...vehicle} />
-            ))
-          ) : (
-            <span className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</span>
-          )}
+        <div className={`grid ${isMobile ? 'sm:grid-cols-1' : 'lg:grid-cols-2 xl:grid-cols-4'} gap-4 p-6 place-items-center rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''}`}>
+          {vehicles.length > 0 ? vehicles.map(vehicle => (
+            <VehicleCard key={vehicle.vin} {...vehicle} />
+          )) : <span className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</span>}
           {totalPages > 0 && (
-            <div className="flex items-center justify-center gap-8 w-full col-span-full animate-fadeIn">
+            <div className="flex items-center mt-2 justify-center gap-8 w-full col-span-full animate-fadeIn">
               {currentPage > 1 && (
-                <button onClick={goToPreviousPage} className="text-white bg-blue-500 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded">
+                <button onClick={() => changePage(-1)} className="text-white bg-blue-500 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded">
                   Anterior
                 </button>
               )}
               {currentPage < totalPages && (
-                <button onClick={goToNextPage} className="text-white bg-blue-500 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded">
+                <button onClick={() => changePage(1)} className="text-white bg-blue-500 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded">
                   Próximo
                 </button>
               )}
@@ -140,4 +125,5 @@ const VehicleFilterComponent: React.FC = () => {
     </section>
   );
 };
+
 export default VehicleFilterComponent;

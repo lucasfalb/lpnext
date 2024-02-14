@@ -17,7 +17,7 @@ enum VehicleSegment {
 
 interface CarFilterMobileProps {
   selectedSegment: number | undefined;
-  setSelectedSegment: (value: number | undefined) => void;
+  setSelectedSegment: (value: number) => void;
 }
 
 export default function CarFilterMobile({ selectedSegment, setSelectedSegment }: CarFilterMobileProps) {
