@@ -39,6 +39,7 @@ const VehicleFilterComponent: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSegment, setSelectedSegment] = useState<number>(VehicleSegment.TODOS);
+  const [previousSegment, setPreviousSegment] = useState<number | undefined>(selectedSegment);
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [toggleAnimation, setToggleAnimation] = useState(false);
@@ -84,6 +85,10 @@ const VehicleFilterComponent: React.FC = () => {
   };
 
   useEffect(() => {
+    if (selectedSegment !== previousSegment) {
+      setCurrentPage(1);
+      setPreviousSegment(selectedSegment);
+    }
     fetchVehicles();
   }, [currentPage, selectedSegment]);
 
@@ -101,7 +106,7 @@ const VehicleFilterComponent: React.FC = () => {
           <CarFilterDesktop selectedSegment={selectedSegment} setSelectedSegment={setSelectedSegment} />
         )}
 
-        <div className={`grid ${isMobile ? 'sm:grid-cols-1' : 'lg:grid-cols-2 xl:grid-cols-4'} gap-4 p-6 place-items-center rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''}`}>
+        <div className={`grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 p-6 place-items-center rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''}`}>
           {vehicles.length > 0 ? vehicles.map(vehicle => (
             <VehicleCard key={vehicle.vin} {...vehicle} />
           )) : <span className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</span>}
