@@ -7,10 +7,11 @@ interface CustomSelectProps {
   placeholder: string;
   options: string[];
   disabled?: boolean;
+  classList?: string;
   onChange: (selectedOption: string) => void;
 }
 
-export default function CustomSelect({ label, placeholder, options, onChange, disabled }: CustomSelectProps): JSX.Element {
+export default function CustomSelect({ label, placeholder, options, onChange, disabled,classList }: CustomSelectProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>('');
   const dropdownRef = useRef<HTMLDivElement>(null); // Ref para o container do dropdown
@@ -45,8 +46,8 @@ export default function CustomSelect({ label, placeholder, options, onChange, di
   }, [isOpen]);
 
   return (
-    <div ref={dropdownRef} className={`relative flex flex-col gap-2 ${disabled ? 'pointer-events-none opacity-50' : ''}`}>
-      <label onClick={toggleDropdown} className="text-sm text-gray leading-none font-semibold cursor-pointer">{label}</label>
+    <div ref={dropdownRef} className={`${classList ? classList : ''} relative flex flex-col gap-2 ${disabled ? 'pointer-events-none opacity-50' : ''}`}>
+      <label onClick={toggleDropdown} className="text-sm text-gray leading-none cursor-pointer">{label}</label>
       <div className="relative">
         <button
           title={selectedOption || placeholder}
@@ -65,7 +66,7 @@ export default function CustomSelect({ label, placeholder, options, onChange, di
               <span
                 key={index}
                 onClick={() => handleOptionClick(option)}
-                className="block px-4 py-2 cursor-pointer hover:bg-gray-100"
+                className="block px-4 py-2 cursor-pointer hover:bg-[#f3f3f3f3]"
               >
                 {option}
               </span>

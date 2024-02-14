@@ -19,7 +19,7 @@ export default function CustomRadio({ value, label, checked, onChange }: CustomR
   };
 
   return (
-    <label className={`py-5 cursor-pointer px-6 flex align-middle leading-none text-base font-semibold items-center gap-1 border border-solid ${checked ? 'border-[#0053FF] text-blueLightCp' : 'border-[#CCD3E2] text-gray '} rounded`} htmlFor={inputId}>
+    <label className={`py-5 cursor-pointer px-6 flex align-middle leading-none text-base font-semibold items-center gap-1 border border-solid ${checked ? 'border-[#0053FF] text-blueLightCp' : 'border-lightGray text-gray '} rounded`} htmlFor={inputId}>
       <input
         className={`accent-[#0053FF] mb-[4px] min-h-[14px] min-w-[14px]`}
         width={14}

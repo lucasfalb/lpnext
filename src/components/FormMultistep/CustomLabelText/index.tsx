@@ -40,9 +40,9 @@ export default function CustomLabelText({ label, type, placeholder, error,autoco
     setIsFocused(false);
   };
 
-  const inputClass = `p-5 rounded cursor-pointer border ${
-    error ? 'border-red-500' : 'border-solid border-[#BDBDBD]'
-  } ${isFocused || inputValue || error ? 'bg-white' : 'bg-whiteSmoke'} placeholder-[#BDBDBD] text-sm  font-semibold hover:bg-[#FFF]`;
+  const inputClass = `p-5 text-[#000] placeholder-[#BDBDBD] rounded cursor-pointer border ${
+    error ? 'border-red-500' : 'border-solid border-lightGray'
+  } ${isFocused || inputValue || error ? 'bg-white' : 'bg-whiteSmoke'} text-sm hover:bg-[#FFF]`;
 
   return (
     <label className="flex flex-col gap-2 text-sm text-gray leading-none" htmlFor={inputId}>

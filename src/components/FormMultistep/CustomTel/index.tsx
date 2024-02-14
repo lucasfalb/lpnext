@@ -74,7 +74,7 @@ export default function CustomTel({
       </svg>
     );
   }
-  const contentClass = `rounded cursor-pointer border ${error ? 'border-red-500 ' : 'border-solid border-[#BDBDBD]'}`;
+  const contentClass = `rounded text-[#000] cursor-pointer border ${error ? 'border-red-500 ' : 'border-solid border-gray'}`;
   return (
     <label className="flex flex-col gap-2 text-sm text-gray leading-none" htmlFor={inputId}>
       {label}
@@ -100,7 +100,7 @@ export default function CustomTel({
           onChange={handleInputChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className={`${isFocused || inputValue ? 'bg-white' : 'bg-whiteSmoke'} placeholder-[#BDBDBD] w-full pt-5 pl-2 text-sm  font-semibold pr-5 pb-5 focus:outline-none hover:bg-[#FFF] cursor-pointer`}
+          className={`${isFocused || inputValue ? 'bg-white' : 'bg-whiteSmoke'} placeholder-[#BDBDBD] w-full pt-5 pl-2 text-sm pr-5 pb-5 focus:outline-none hover:bg-[#FFF] cursor-pointer`}
         />
         <input className='hidden' name="country" defaultValue={Countries[selectedCountryIndex].country} type="text" />
         <input className='hidden' name="prefix" defaultValue={Countries[selectedCountryIndex].dialCode} type="text" />

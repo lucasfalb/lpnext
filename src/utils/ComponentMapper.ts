@@ -14,6 +14,7 @@ import FAQ from '@/components/FAQ';
 import SectionWithCTA from '@/components/SectionWithCTA';
 import BenefitsCarplus from '@/components/BenefitsCarplus';
 import BenefitsCarplusNoFilter from '@/components/BenefitsCarplusNoFilter';
+import HeroSectionFullForm from '@/components/HeroSectionFullForm';
 
 interface ComponentMapperType {
   [key: string]: FunctionComponent;
@@ -21,6 +22,7 @@ interface ComponentMapperType {
 const ComponentMapper: ComponentMapperType = {
   header: Header,
   hero_section_w_multistep: HeroSectionWithMultistep,
+  hero_section_w_fullform: HeroSectionFullForm,
   countdown: Countdown,
   cars_gallery: VehicleFilterComponent,
   trustpilot: Trustpilot,
@@ -30,7 +32,7 @@ const ComponentMapper: ComponentMapperType = {
   small_text_container: SmallTextContainer,
   section_with_cta:SectionWithCTA,
   footer: Footer,
-  benefits_carplus:BenefitsCarplus,
+  benefits_carplus: BenefitsCarplus,
   benefits_carplus_no_filter: BenefitsCarplusNoFilter
 };
 

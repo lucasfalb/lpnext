@@ -11,7 +11,7 @@ type SectionWithCTAProps = {
 
 export default function SectionWithCTA({ title, description, ctaText, ctaLink }: SectionWithCTAProps) {
   return (
-    <Container className="gap-4 md:gap-6">
+    <Container className="mt-12 gap-4 md:gap-6">
       <h2 className="text-2xl font-bold text-darkBlueCp">{title || ''}</h2>
       <div>
         <h3 className="text-lg font-semibold text-darkBlueCp">{description || ''}</h3>
