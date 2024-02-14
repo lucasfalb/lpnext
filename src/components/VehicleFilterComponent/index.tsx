@@ -4,6 +4,7 @@ import VehicleCard from './VehicleCard';
 import CarSvg from '@/components/CarSvg';
 import './style.css'
 enum VehicleSegment {
+  TODOS = 0,
   SEDAN = 13,
   SUV = 10,
   MONOVOLUME = 15,
@@ -31,7 +32,7 @@ const VehicleFilterComponent: React.FC = () => {
   const [vehicles, setVehicles] = useState<VehicleDetail[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedSegment, setSelectedSegment] = useState<number | undefined>(undefined);
+  const [selectedSegment, setSelectedSegment] = useState<number | undefined>(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -39,7 +40,9 @@ const VehicleFilterComponent: React.FC = () => {
     setLoading(true);
     const url = 'https://demoapi.gsci.pt/ds/search/v2';
     const filterPayload = {
-      segment: selectedSegment !== undefined ? [selectedSegment] : [],
+      filters: {
+        segment: (selectedSegment !== undefined && selectedSegment !== 0) ? [selectedSegment] : [],
+      },
       needle: "",
     };
 
@@ -77,14 +80,34 @@ const VehicleFilterComponent: React.FC = () => {
         <h2 className='text-white text-5xl font-bold text-center max-w-[860px]'>Conheça os nossos Renault mais procurados!</h2>
         <h3 className='text-white text-lg text-center'>Garanta o seu com a qualidade e confiança da Carplus!</h3>
 
-
-        {loading && <div>Carregando...</div>}
-        {error && <div>Erro: {error}</div>}
-
-        <div className='grid grid-cols-4 gap-4 p-6 rounded custom-shadow-cars bg-white min-w-full'>
-          {vehicles.map((vehicle, index) => (
-            <VehicleCard key={index} {...vehicle} />
+        <select className="mobile-select" onChange={(e) => setSelectedSegment(e.target.value ? Number(e.target.value) : undefined)}>
+          <option value="">Selecione um segmento</option>
+          {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
+            <option key={key} value={value}>{key.replace('_', ' ')}</option>
           ))}
+        </select>
+
+        <div className="box-car-filter flex rounded overflow-hidden">
+          {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
+            <button
+              key={key}
+              className={`${selectedSegment === value ? 'bg-white text-darkBlueCp' : 'bg-whiteSmoke text-[#C1C1C1]'} py-5 px-6 text-base font-bold flex items-center justify-center`}
+              onClick={() => setSelectedSegment(Number(value))}
+            >
+              {key.replace('_', ' ')}
+            </button>
+          ))}
+        </div>
+
+        {error && <div>Erro: {error}</div>}
+        <div className={`grid grid-cols-4 gap-4 p-6 rounded custom-shadow-cars bg-white min-w-full`}>
+          {vehicles.length > 0 ? (
+            vehicles.map((vehicle, index) => (
+              <VehicleCard key={index} {...vehicle} />
+            ))
+          ) : (
+            <div className="col-span-4 text-center">Não há carros nesse segmento</div>
+          )}
         </div>
       </div>
       <CarSvg className="absolute inset-0 top-car" />
