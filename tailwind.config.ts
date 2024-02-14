@@ -27,6 +27,15 @@ const config: Config = {
         "18px": "1.125rem",
         "40px": "2.5rem",
       },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 1s ease-out',
+      },
       spacing: {
         "38px": "2.375rem",
         "64px": "4rem",

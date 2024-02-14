@@ -2,21 +2,21 @@ import Image from 'next/image'
 import VehicleDetail from '@/utils/TypesVehicle'
 
 export default function VehicleCard(props: VehicleDetail): JSX.Element { 
-    const { brand, model, version } = props;
+    const { brand, model, version, imageUrl, pricePvp } = props;
 
     return (
-      <article>
+      <article className='animate-fadeIn flex flex-col gap-4 cursor-pointer'>
         <figure>
-          <Image src={props.imageUrl} alt={props.model} width={418} height={241} /> 
+          <Image className='rounded' src={imageUrl} alt={model} width={418} height={241} /> 
         </figure>
-        <div>
+        <div className='flex items-start justify-between'>
           <div>
-            <h2>{brand} {model}</h2> 
-            <h3>{version}</h3>
+            <h2 className='text-darkBlueCp font-semibold text-lg'>{brand} {model}</h2> 
+            <h3 className='text-darkBlueCp text-base'>{version}</h3>
           </div>
-          <span>
+          <span className='bg-[#CCDDFF] rounded pt-4 pb-2 px-2 flex flex-col text-[#3375FF]'>
             Desde
-            <b>{props.pricePvp} €</b>
+            <b className='font-bold text-2xl text-[#0053FF]'>{pricePvp} €</b>
           </span>
         </div>
       </article>
