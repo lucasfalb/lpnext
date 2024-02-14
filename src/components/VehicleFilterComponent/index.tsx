@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import VehicleDetail from '@/utils/TypesVehicle'
 import VehicleCard from './VehicleCard';
 import CarSvg from '@/components/CarSvg';
+import CarFilterDesktop from './CarFilterDesktop';
+import CarFilterMobile from './CarFilterMobile';
 import './style.css'
 enum VehicleSegment {
   TODOS = 0,
@@ -24,8 +26,10 @@ interface VehicleFilter {
 interface SearchResponse {
   data: {
     searchResult: VehicleDetail[];
-    totalPages: number;
   };
+  pagination: {
+    maxPage: number;
+  }
 }
 
 const VehicleFilterComponent: React.FC = () => {
@@ -34,11 +38,22 @@ const VehicleFilterComponent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSegment, setSelectedSegment] = useState<number | undefined>(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const [toggleAnimation, setToggleAnimation] = useState(false);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1280);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const fetchVehicles = async () => {
     setLoading(true);
-    const url = 'https://demoapi.gsci.pt/ds/search/v2';
+    const url = 'https://api.gsci.pt/ds/search/v2';
     const filterPayload = {
       filters: {
         segment: (selectedSegment !== undefined && selectedSegment !== 0) ? [selectedSegment] : [],
@@ -62,51 +77,62 @@ const VehicleFilterComponent: React.FC = () => {
       const data: SearchResponse = await response.json();
       console.log(data)
       setVehicles(data.data.searchResult);
-      setTotalPages(data.data.totalPages);
+      setTotalPages(data.pagination.maxPage);
+      setToggleAnimation((prev) => !prev);
     } catch (error: any) {
-      setError(error.message);
+      console.error(error)
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    setCurrentPage(1)
     fetchVehicles();
   }, [currentPage, selectedSegment]);
+  function goToNextPage() {
+    setCurrentPage(currentPage + 1);
+  };
 
+  function goToPreviousPage() {
+    setCurrentPage(currentPage - 1);
+  };
   return (
-    <section className='bg-cars-gallery-gradient py-14 relative overflow-hidden'>
+    <section className='bg-cars-gallery-gradient py-14 relative overflow-hidden min-h-[650px]'>
       <div className='max-w-[1920px] px-5 m-auto flex flex-col items-center gap-8 relative z-[2]'>
         <h2 className='text-white text-5xl font-bold text-center max-w-[860px]'>Conheça os nossos Renault mais procurados!</h2>
         <h3 className='text-white text-lg text-center'>Garanta o seu com a qualidade e confiança da Carplus!</h3>
 
-        <select className="mobile-select" onChange={(e) => setSelectedSegment(e.target.value ? Number(e.target.value) : undefined)}>
-          <option value="">Selecione um segmento</option>
-          {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
-            <option key={key} value={value}>{key.replace('_', ' ')}</option>
-          ))}
-        </select>
+        {isMobile ? (
+          <CarFilterMobile selectedSegment={selectedSegment} setSelectedSegment={setSelectedSegment} />
+        ) : (
+          <CarFilterDesktop selectedSegment={selectedSegment} setSelectedSegment={setSelectedSegment} />
+        )}
 
-        <div className="box-car-filter flex rounded overflow-hidden">
-          {Object.entries(VehicleSegment).filter(([key]) => isNaN(Number(key))).map(([key, value]) => (
-            <button
-              key={key}
-              className={`${selectedSegment === value ? 'bg-white text-darkBlueCp font-bold' : 'bg-whiteSmoke text-[#C1C1C1]'} py-5 px-6 text-base flex items-center justify-center`}
-              onClick={() => setSelectedSegment(Number(value))}
-            >
-              {key.replace('_', ' ')}
-            </button>
-          ))}
-        </div>
-
-        {error && <div>Erro: {error}</div>}
-        <div className={`grid grid-cols-4 gap-4 p-6 rounded custom-shadow-cars bg-white min-w-full`}>
+        <div
+          className={`sm:grid-cols-1 grid lg:grid-cols-2 xl:grid-cols-4 gap-4 p-6 place-items-center rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''
+            }`}
+        >
           {vehicles.length > 0 ? (
             vehicles.map((vehicle, index) => (
-              <VehicleCard key={index} {...vehicle} />
+              <VehicleCard key={vehicle.vin} {...vehicle} />
             ))
           ) : (
-            <div className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</div>
+            <span className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</span>
+          )}
+          {totalPages > 0 && (
+            <div className="flex items-center justify-center gap-8 w-full col-span-full animate-fadeIn">
+              {currentPage > 1 && (
+                <button onClick={goToPreviousPage} className="text-white bg-blue-500 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded">
+                  Anterior
+                </button>
+              )}
+              {currentPage < totalPages && (
+                <button onClick={goToNextPage} className="text-white bg-blue-500 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded">
+                  Próximo
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>
@@ -114,8 +140,4 @@ const VehicleFilterComponent: React.FC = () => {
     </section>
   );
 };
-
-function inProgress() {
-  return (<h2 className='p-5 text-center'>Cars Gallery in building</h2>)
-}
 export default VehicleFilterComponent;
