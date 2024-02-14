@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        'cars-gallery-gradient': 'linear-gradient(180deg, #0053FF 0%, rgba(0, 83, 255, 0) 100%)',
         'custom-gradient': 'linear-gradient(180deg, #334E8C 0%, #001B59 100%)',
       },
       colors: {
