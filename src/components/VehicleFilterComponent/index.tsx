@@ -57,7 +57,6 @@ const VehicleFilterComponent: React.FC = () => {
         'Content-Type': 'application/json',
         'Companyid': '2',
         'Access-Control-Allow-Origin': '*',
-        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkaWdpdGFsX3N0b3JlIiwianRpIjoiNWU2YjZhMTctNmU3MS00OGY0LWE2ZWEtMTVjOWQ3Njc4OGEzIiwic3ViIjoiIiwiYXVkIjoiZGlnaXRhbF9zdG9yZV9hdWQiLCJ1c2VySWQiOiIiLCJjb21wYW55SWQiOiIxIiwiZ3JvdXBzIjpbIkd1ZXN0Il0sImV4cCI6NDgyOTg0NTUxNiwiaWF0IjoxNzA3NzgxNjQ0fQ.JNOgPP8KcE_1eayUTnMOVltQZKBNFmw5YP85viJhAmSl-Ti-RoQNJkJle-Vb9NLEmREnxwnPn4AciO_yiisCbr5kS907F07S-nbDtKPCsd7hb_FSoAFTMaAu_LJwrIF1YRXwIo8JlQznShNvlhGoYT_zG9zr-cQ4nWtfdsqjsH-LD4apOMKr2gKKYAdSHkXbs8ufO1etj8_uagBm6TCutfgsM6ZAP4hhM8gHbf5mUUWY7xBaD5SiHcexgduJ5LxtOhDaBMlg93NM2JAoFuaB0Po35r11tg-X1s8g7pp2VS0H2xw4Os5FQ19uLoncRu5hpGH8H1IsI_aAqhyouZklYw'
       },
       body: JSON.stringify(filterPayload),
     };
@@ -97,4 +96,4 @@ const VehicleFilterComponent: React.FC = () => {
 function inProgress(){
   return (<h2 className='p-5 text-center'>Cars Gallery in building</h2>)
 }
-export default inProgress;
+export default VehicleFilterComponent;
