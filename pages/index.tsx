@@ -14,6 +14,7 @@ export default function Home({ siteConfig }: HomePageProps) {
       <Head>
         <title>Carplus - Growth</title>
         <meta name="description" content="The best LP" />
+        <link rel="preload" as="image" href="http://localhost:3001/_next/image?url=https%3A%2F%2Fapi.lucasfalb.com%2Fwp-content%2Fuploads%2F2024%2F02%2Feb616e37f7b18fda5e99c47228402d53.png&w=1920&q=75" />
         <link rel="preload" href="/fonts/Mont-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
       </Head>
       {siteConfig.page_config_v1 && siteConfig.page_config_v1.map((item: any, index: number) => {

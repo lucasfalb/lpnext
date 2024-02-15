@@ -1,3 +1,3 @@
-export default function Trustpilot(){
-  return (<h2 className='p-5 text-center'>TrustPilot in building</h2>)
+export default function Trustpilot() {
+  return (<div className="trustpilot-widget" data-locale="pt-PT" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="6347d503dbf1019a39a1a804" data-style-height="140px" data-style-width="100%" data-theme="light" data-stars="1,2,3,4,5" data-review-languages="pt">   <a href="https://pt.trustpilot.com/review/clicaevendecarro.pt" target="_blank" rel="noopener">Trustpilot</a> </div>)
 }
