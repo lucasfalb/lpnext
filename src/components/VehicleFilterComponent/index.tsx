@@ -106,7 +106,7 @@ const VehicleFilterComponent: React.FC = () => {
           <CarFilterDesktop selectedSegment={selectedSegment} setSelectedSegment={setSelectedSegment} />
         )}
 
-        <div className={`grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 p-6 place-items-center min-h-[801px] rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''}`}>
+        <div className={`grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 p-6 place-items-center rounded custom-shadow-cars bg-white min-w-full ${toggleAnimation ? 'animate-fadeIn' : ''}`}>
           {vehicles.length > 0 ? vehicles.map(vehicle => (
             <VehicleCard key={vehicle.vin} {...vehicle} />
           )) : <span className="col-span-4 text-center animate-fadeIn">Não há carros nesse segmento</span>}
