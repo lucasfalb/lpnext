@@ -12,7 +12,7 @@ type HeroSectionWithMultistepProps = {
 
 export default function HeroSectionWithMultistep({title,subtitle,highlight_image}:HeroSectionWithMultistepProps) {
   return (
-    <Container className="my-7 md:my-14">
+    <Container className="my-7 md:my-14 min-h-[534px]">
       <article>
         <h1 className="font-bold text-[40px] leading-[52px] text-left text-darkBlueCp" dangerouslySetInnerHTML={{ __html: title || '' }}></h1>
         <h2 className="font-medium text-[18px] mt-4 leading-[27px] text-left text-darkBlueCp">{subtitle || ''}</h2>
