@@ -33,15 +33,16 @@ const CountdownHeader: React.FC<CountdownProps> = ({ endDate }) => {
   }, [endDate]);
 
   return (
-    timeLeft &&
     <div className="countdown fade-in flex items-center justify-center md:min-h-[58px] bg-darkBlueCp relative z-20 top-0">
-      <div className="px-5 flex my-auto items-center justify-center fixed gap-2 bg-darkBlueCp w-full min-h-[58px] py-2 flex-wrap top-0">
-        <span className='bg-[#001443] text-white align-middle flex items-center justify-center w-fit pt-2 pb-1 px-3 rounded-[47px] h-full border border-solid border-[#99A7C5]'>Nova</span>
-        <span className='text-white text-lg text-center font-semibold'>
-          Campanha por tempo limitado
-        </span>
-        <span className='min-w-fit text-white text-align font-bold align-middle mt-1'>{`${timeLeft.days}d : ${timeLeft.hours}h : ${timeLeft.minutes}m : ${timeLeft.seconds}s`}</span>
-      </div>
+    {timeLeft && (
+       <div className="px-5 flex my-auto items-center justify-center fixed gap-2 bg-darkBlueCp w-full min-h-[58px] py-2 flex-wrap top-0">
+       <span className='bg-[#001443] text-white align-middle flex items-center justify-center w-fit pt-2 pb-1 px-3 rounded-[47px] h-full border border-solid border-[#99A7C5]'>Nova</span>
+       <span className='text-white text-lg text-center font-semibold'>
+         Campanha por tempo limitado
+       </span>
+       <span className='min-w-fit text-white text-align font-bold align-middle mt-1'>{`${timeLeft.days}d : ${timeLeft.hours}h : ${timeLeft.minutes}m : ${timeLeft.seconds}s`}</span>
+     </div>
+    )}
     </div>
   );
 }
