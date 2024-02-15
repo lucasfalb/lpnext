@@ -24,10 +24,11 @@ export default function Home({ siteConfig }: HomePageProps) {
     </>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch('https://api.lucasfalb.com/wp-json/site-config/v1');
   const siteConfig = await res.json();
+
+  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
 
   return {
     props: {
